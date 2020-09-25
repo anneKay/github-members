@@ -3,6 +3,16 @@ import PropTypes from 'prop-types';
 
 
 const MemberLists = () => {
+  const [ loading, setLoading ] = useState(true);
 
-  
+  useEffect(() => {
+
+  }, [])
+
+  return (
+    <>
+      
+    </>
+  );
+
 }
