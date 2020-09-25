@@ -14,7 +14,7 @@ const setMemberListFailure = payload => ({
 
 export const getMemberList = (history) => async dispatch => {
   try {
-    const response = await fetchData();
+    const response = await fetchData('https://test-archimides.free.beeceptor.com/api/getStories');
     const data = response.json();
     if (response.ok) {
       dispatch(setMemberListSuccess(data));

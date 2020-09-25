@@ -1,0 +1,76 @@
+.details-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  margin: 20px 0;
+  .user-details {
+      // word-break: break-word;
+      margin-right: 20px;
+      width: 60%;
+  }
+  .avatar {
+    position: relative;
+    width: 60px;
+    height: 60px;
+    overflow: hidden;
+    @media screen and (max-width: 480px) {
+      margin-left: 20px;
+      margin-right: 10px;
+    }
+    // img {
+    //   width: 100%;
+    //   height: auto;
+    // }
+  }
+  .user-follow-details {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+
+
+
+
+.task-items {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  margin: 20px 0;
+  .task-detail {
+    word-break: break-word;
+    margin-right: 20px;
+    width: 60%;
+  }
+
+  .image-container {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    overflow: hidden;
+    border-radius: 50%;
+    @media screen and (max-width: 480px) {
+      margin-left: 20px;
+      margin-right: 10px;
+    }
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+  .time {
+    white-space: nowrap;
+    @media screen and (max-width: 480px) {
+      margin-right: 20px;
+    }
+  }
+  input {
+    -webkit-box-shadow: 0px 0px 0px 1px black;
+    -moz-box-shadow: 0px 0px 0px 1px black;
+    box-shadow: 0px 0px 0px 1px black;
+    margin-right: 40px;
+      
+  }
+}

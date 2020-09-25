@@ -2,7 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import {getMemberList} from '../actions/memberListAction';
+import Header from './common/Header';
 import sampleData from '../utils/helper';
+import "../stylesheet/member-list.scss";
 
 const MemberList = ({ getMemberList }) => {
 
@@ -28,6 +30,7 @@ const MemberList = ({ getMemberList }) => {
 
   return (
     <>
+    <Header />
       {/* {loading ? (
         <div>Loading ...</div>
       ) : 
@@ -37,9 +40,10 @@ const MemberList = ({ getMemberList }) => {
           ))}
       </ul>
       } */}
-       <ul>
+      <ul className="memberList-container">
           {memberList.length > 0 && memberList.map(list => (
-            <li>{list.login}</li>
+            <a href={`/${list.login}`}><li className="members">{list.login}</li></a>
+            
           ))}
       </ul>
     </>

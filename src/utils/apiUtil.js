@@ -1,10 +1,10 @@
-export const fetchData = async () => {
+export const fetchData = async (url) => {
   const headers = {
     Accept: 'application/json',
     'Content-Type': 'application/json',
   }
   try {
-    const response = fetch('https://test-archimides.free.beeceptor.com/api/getStories', {...headers});
+    const response = fetch(url, {...headers});
     return response;
   } catch(error) {
     throw error;
