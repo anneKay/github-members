@@ -1,32 +1,34 @@
 import React, { useState, useEffect } from 'react';
 import { getUserFollow } from '../actions/memberDetailsaction';
+import PropTypes from "prop-types";
 
 const MemberRepo = ({ url }) => {
 
   const [ userFollow, setUserFollow] = useState([]);
+  const [ userFollowError, setUserFollowError ] = useState({});
 
 
-  useState(() => {
-    
-    console.log(data);
-    // if(loading) {
-    //   const response = await getUserFollow();
-    //   console.log(response, '>>>>>>>>>>>');
-    //   if(response.ok){
-    //     setUserFollow(response);
-    //   } else {
-    //     setUserRepoError(response)
-    //   }
-    //   setLoading(false);
-    // }
+  useEffect(() => {
+    async function fetchFollow() {
+      const response = await getUserFollow(url);
+      if(response.ok){
+        setUserFollow(response);
+      } else {
+        setUserFollowError(response);
+      }
+    }
+    fetchFollow();
   })
 
   return (
     <>
-      <p>{userFollow.length()}</p>
+      <p>{userFollow.length}</p>
     </>
   );
 }
 
-export default MemberRepo;
+Follower.propTypes = {
+  url: PropTypes.string,
+};
 
+export default MemberRepo;

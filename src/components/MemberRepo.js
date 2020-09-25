@@ -1,26 +1,25 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from "prop-types";
 import { getUserRepo } from '../actions/memberDetailsaction';
-import getRepos, { getRepo } from "../utils/helper";
 
-const MemberRepo = () => {
+const MemberRepo = ({ url }) => {
 
   const [ userRepo, setUserRepo ] = useState([]);
   const [ userRepoError, setUserRepoError ] = useState({});
   const [loading, setLoading] = useState(true);
 
-  useState(() => {
-    const { data } = this.props;
-    console.log(data);
-    // if(loading) {
-    //   const response = await getUserRepo();
-    //   console.log(response, '>>>>>>>>>>>');
-    //   if(response.ok){
-    //     setUserRepo(response);
-    //   } else {
-    //     setUserRepoError(response)
-    //   }
-    //   setLoading(false);
-    // }
+  useEffect(() => {
+    async function fetchRepos() {
+      if(loading) {
+      const response = await getUserRepo(url);
+      if(response.ok){
+        setUserRepo(response);
+      } else {
+        setUserRepoError(response)
+      }
+      setLoading(false);
+    }
+  } fetchRepos();
   })
 
   return (
@@ -32,27 +31,23 @@ const MemberRepo = () => {
           <>
           <p>Repos</p>
           <ul>
-            {getRepo.map(repo => (
-              <a src={repo.html_url}>
+            {userRepo.map(repo => (
+              <a href={repo.html_url}>
               <li>
-                 {repo.name}         
+                {repo.name}         
               </li> 
               </a>
-                
             ))}
-         
         </ul>
         </>
         )}
-         
         </div>
     </>
   );
 }
 
+MemberRepo.propTypes = {
+  url: PropTypes.string.isRequired,
+};
 
-const mapStateToProps = ({ data }) => ({
-  data,
-});
-
-export default connect(mapStateToProps)(withRouter(MemberRepo));
+export default MemberRepo;

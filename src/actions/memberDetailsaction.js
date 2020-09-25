@@ -13,7 +13,7 @@ const setMemberDetailFailure = payload => ({
 
 export const getUser = (url) => async dispatch => {
   try {
-    const response = await fetchData(url);
+    const response = await fetchData(`https://api.github.com/users${url}`);
     const data = response.json();
     if (response.ok) {
       dispatch(setMemberDetailSuccess(data));
