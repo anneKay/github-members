@@ -1,0 +1,16 @@
+.memberList-container {
+  padding-top: 60px;
+  display: inline-block;
+  a {
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+    &:hover {
+      color: blue;
+    }
+  }
+  .members {
+    padding-bottom: 10px;
+    list-style: none;
+  }
+}

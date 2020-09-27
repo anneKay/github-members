@@ -1,0 +1,55 @@
+.user-container {
+  margin-top: 80px;
+}
+.details-container {
+  width: 100%;
+  display: flex;
+  font-size: 14px;
+  padding-left: 20px;
+  margin-bottom: 20px;
+  .user-details {
+    margin-right: 20px;
+    padding-left: 20px;
+    p {
+      line-height: 5px;
+    }
+  }
+  @media screen and (max-width: 480px) {
+    display: block;
+    .user-details {
+      padding-left: 0;
+    }
+  }
+  .avatar {
+    position: relative;
+    width: 250px;
+    overflow: hidden;
+  }
+  .user-follow-details {
+    .follow {
+      &:last-of-type {
+        padding-top: 10px;
+      }
+    }
+  }
+}
+
+.Repo-container {
+  padding-left: 20px;
+  ul{
+    width: fit-content;
+    padding-left: 0;
+    li {
+      list-style-type: none;
+      padding-bottom: 6px;
+    }
+  }
+  .repo-text {
+    text-decoration: none;
+    color: inherit;
+    &:hover {
+      color : blue;
+    }
+  }
+  
+}

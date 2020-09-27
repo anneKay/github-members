@@ -1,0 +1,25 @@
+#header-container {
+  background-color: rgb(103, 74, 237);
+  .header-items {
+    position: fixed;
+    top: 0;
+    height: 60px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    padding: 0 40px;
+    box-shadow: 1px 1px 8px #efedea;
+    z-index: 5;
+    color: #fff;
+    background-color: rgb(103, 74, 237);
+    a {
+      margin-right: 80px;
+    }
+    h4{
+      font-weight: bolder;
+      margin-top: 18px;
+      font-size: 21px;
+    }
+  }
+}
