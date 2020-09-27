@@ -4,7 +4,7 @@ const initialState = {
   data: {},
   error: {}
 }
-export default (state = initialState, type, payload) => {
+export default (state = initialState, {type, payload}) => {
   switch(type) {
     case action.MEMBER_DETAIL_SUCCESS:
       return {

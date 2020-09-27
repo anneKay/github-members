@@ -6,7 +6,6 @@ const Header = () => (
         <div className="header-items">
           <h4>Members</h4>
         </div>
-        
       </header>
   );
 

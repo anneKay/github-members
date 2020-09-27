@@ -1,5 +1,6 @@
 import actionTypes from '../utils/actionTypes';
 import { fetchData } from '../utils/apiUtil';
+import { userDetails, getRepo } from '../utils/helper';
 
  const setMemberDetailSuccess = payload => ({
   type: actionTypes.MEMBER_DETAIL_SUCCESS,
@@ -14,30 +15,24 @@ const setMemberDetailFailure = payload => ({
 export const getUser = (url) => async dispatch => {
   try {
     const response = await fetchData(`https://api.github.com/users${url}`);
-    const data = response.json();
+    const data = await response.json();
     if (response.ok) {
       dispatch(setMemberDetailSuccess(data));
-      return data;
+    } else {
+      dispatch(setMemberDetailFailure(data))
     }
+    return data;
   } catch(error) {
     dispatch(setMemberDetailFailure(error));
+    return error;
   }
 }
 
 export const getUserRepo = async (url) => {
   try {
     const response = await fetchData(url);
-    return response.json();
+    if(response.ok) return response.json();
   } catch(error) {
     return error;
   }
 };
-
-export const getUserFollow = async (url) => {
-  try {
-    const response = await fetchData(url);
-    return response.json();
-  } catch (error) {
-    return error;
-  }
-}

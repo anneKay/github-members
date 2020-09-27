@@ -1,9 +1,7 @@
 import { combineReducers } from 'redux';
-import memberListReducer from './memberListReducer';
-import memberDetailReducer from './memberDetailsReducer';
+import memberDetail from './memberDetailsReducer';
 
 export default () => 
   combineReducers({
-    memberListReducer,
-    memberDetailReducer,
-  });
+    memberDetail,
+});
