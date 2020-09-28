@@ -3165,3 +3165,11 @@ export const getRepo = [
       }
   }
 ]
+
+export const formatError = (responseObject) => {
+  if(responseObject === 404 ) {
+    return { message: 'Page Not Found' }
+  } else {
+    return {message: 'An error has occured, please try again'}
+  }
+}
