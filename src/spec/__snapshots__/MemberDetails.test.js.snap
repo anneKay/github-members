@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`My Connected React-Redux Component should render with given state from Redux store 1`] = `
+Array [
+  <header
+    id="header-container"
+  >
+    <div
+      className="header-items"
+    >
+      <h4>
+        Members
+      </h4>
+    </div>
+  </header>,
+  <div
+    className="user-container"
+  />,
+]
+`;

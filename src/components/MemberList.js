@@ -14,10 +14,10 @@ const MemberList = () => {
    async function fetchMembers() {
     if (loading === true) {
       const response = await getMemberList();
-      if(response){
+      if(response.message){
+        setShowMembersListErrors(response.message);
+      } else if (response){
         setMemberList(response);
-      } else {
-        setShowMembersListErrors('An error occured');
       }
       setLoading(false);
     }
@@ -28,7 +28,6 @@ const MemberList = () => {
   return (
     <>
     <Header />
-    <Suspense fallback={<h1 className="memberList-container">Loading ...</h1>}>
     {showMembersListErrors.length > 0 ? (
       <div>{showMembersListErrors}</div>
     ) : (
@@ -42,13 +41,9 @@ const MemberList = () => {
     </ul>
       ))
     }
-    </Suspense>
     </>
   )
 }
 
-MemberList.propTypes = {
-  getMemberList: PropTypes.object.isRequired
-};
 
 export default MemberList;

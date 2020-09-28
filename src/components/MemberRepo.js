@@ -7,22 +7,19 @@ import "../stylesheet/member-details.scss";
 
 const MemberRepo = ({ responseData }) => {
 
-  console.log(responseData.repos_url, '>>>>>>>>>>>>>>>')
-
   const [ userRepo, setUserRepo ] = useState([]);
   const [ userRepoError, setUserRepoError ] = useState({});
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     async function fetchRepos() {
-      console.log(responseData, 'this is the response guy')
       const { repos_url } = responseData;
       if(loading && repos_url) {
       const response = await getUserRepo(repos_url);
-      if(response){
-        setUserRepo(response);
+      if(response.message){
+        setUserRepoError(response.message);
       } else {
-        setUserRepoError('Cannot get Repos at this time');
+        setUserRepo(response);
       }
       setLoading(false);
     }
@@ -32,9 +29,7 @@ const MemberRepo = ({ responseData }) => {
   return (
     <>
       <div className="repo-container">
-        {loading ? (
-          <p>Loading ...</p>
-        ) : ( userRepo.length > 0 &&
+        {userRepo.length > 0 &&
           <div className="Repo-container">
           <h3>Repos</h3>
           <ul>
@@ -47,7 +42,7 @@ const MemberRepo = ({ responseData }) => {
             ))}
         </ul>
         </div>
-        )}
+        }
         </div>
     </>
   );
