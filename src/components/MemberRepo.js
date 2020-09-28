@@ -15,15 +15,15 @@ const MemberRepo = ({ responseData }) => {
     async function fetchRepos() {
       const { repos_url } = responseData;
       if(loading && repos_url) {
-      const response = await getUserRepo(repos_url);
-      if(response.message){
-        setUserRepoError(response.message);
-      } else {
-        setUserRepo(response);
+        const response = await getUserRepo(repos_url);
+        if(response.message){
+          setUserRepoError(response.message);
+        } else {
+          setUserRepo(response);
+        }
+        setLoading(false);
       }
-      setLoading(false);
-    }
-  } fetchRepos();
+    } fetchRepos();
   },[])
 
   return (
@@ -41,8 +41,7 @@ const MemberRepo = ({ responseData }) => {
               </a>
             ))}
         </ul>
-        </div>
-        }
+        </div>}
         </div>
     </>
   );

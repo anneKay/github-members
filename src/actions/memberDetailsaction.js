@@ -1,6 +1,6 @@
 import actionTypes from '../utils/actionTypes';
 import { fetchData } from '../utils/apiUtil';
-import { userDetails, getRepo } from '../utils/helper';
+import { formatError } from '../utils/helper';
 
  const setMemberDetailSuccess = payload => ({
   type: actionTypes.MEMBER_DETAIL_SUCCESS,
@@ -18,10 +18,11 @@ export const getUser = (url) => async dispatch => {
     const data = await response.json();
     if (response.ok) {
       dispatch(setMemberDetailSuccess(data));
+      return data;
     } else {
       dispatch(setMemberDetailFailure(data))
+      return formatError(response);
     }
-    return data;
   } catch(error) {
     dispatch(setMemberDetailFailure(error));
     return error;
