@@ -9,7 +9,7 @@ import "../stylesheet/member-details.scss";
 
 const MemberRepo = lazy(() => import("./MemberRepo"));
 
-export const MemberDetails = ({location, getUser, responseData}) => {
+const MemberDetails = ({location, getUser}) => {
   console.log(location, '')
   const [ loading, setLoading ] = useState(true);
   const [userDetail, setUserDetail] = useState( {});
