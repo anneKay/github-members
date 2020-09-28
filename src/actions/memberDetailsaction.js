@@ -31,7 +31,7 @@ export const getUser = (url) => async dispatch => {
 export const getUserRepo = async (url) => {
   try {
     const response = await fetchData(url);
-    if(response.ok) return response.json();
+    return await response.json();
   } catch(error) {
     return error;
   }

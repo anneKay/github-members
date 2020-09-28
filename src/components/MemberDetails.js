@@ -1,15 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense, lazy } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import { getUser } from '../actions/memberDetailsaction';
-import MemberRepo from "./MemberRepo";
 import Header from './common/Header';
+import Loader from "./common/Loader";
 import "../stylesheet/member-details.scss";
 
+const MemberRepo = lazy(() => import("./MemberRepo"));
 
-const MemberDetails = ({location, getUser, responseData}) => {
-
+export const MemberDetails = ({location, getUser, responseData}) => {
+  console.log(location, '')
   const [ loading, setLoading ] = useState(true);
   const [userDetail, setUserDetail] = useState( {});
   const [userDetailError, setUserDetailError] = useState({})
@@ -33,7 +34,7 @@ const MemberDetails = ({location, getUser, responseData}) => {
     <>
     <Header />
     <div className="user-container">
-      {loading && (<div>Loading ...</div>)}
+
     {userDetailError.length > 0 && (
       <div>{userDetailError}</div>
     )}
@@ -50,7 +51,9 @@ const MemberDetails = ({location, getUser, responseData}) => {
             </div>
             </div>
             </div>
-          <MemberRepo url={userDetail.repos_url} />
+            <Suspense fallback={<Loader />}>
+              <MemberRepo url={userDetail.repos_url} />
+            </Suspense>
         </>
       )}
       </div>
@@ -64,8 +67,8 @@ const mapStateToProps = state => ({
 
 MemberDetails.propTypes = {
   location: PropTypes.object.isRequired,
-  getUser: PropTypes.object.isRequired
+  getUser: PropTypes.func.isRequired,
 };
 
 
-export default connect(mapStateToProps, { getUser })(withRouter(MemberDetails));
+export default connect(mapStateToProps, { getUser })(MemberDetails);
